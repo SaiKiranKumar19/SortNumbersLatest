@@ -35,6 +35,24 @@ public class SortServiceTest {
 		SortedResult sortResult = SortService.sort("4,3,2,A");
 		Assert.assertTrue(sortResult.getStatus().contains("Sort Failed"));
 	}
+	@Test
+	public void testFor_SwapCount() {
+		int ExpectedSwapCount = 6;
+		SortedResult sortResult = SortService.sort("4,3,2,1");
+		Assert.assertEquals(ExpectedSwapCount, sortResult.getSwapCount());
+	}
+	@Test
+	public void testFor_SortedInput() {
+		int ExpectedSwapCount = 0;
+		SortedResult sortResult = SortService.sort("1,2,3,4");
+		Assert.assertEquals(ExpectedSwapCount, sortResult.getSwapCount());
+	}
+	@Test
+	public void testFor_NegativeInput() {
+		int ExpectedSwapCount = 0;
+		SortedResult sortResult = SortService.sort("-4,-3,-2,1");
+		Assert.assertEquals(ExpectedSwapCount, sortResult.getSwapCount());
+	}
 
 	
 	
